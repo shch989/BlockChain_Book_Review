@@ -93,3 +93,5 @@ electrum --testnet listaddresses
 ## 주소에 자금 추가
 ### 비트코인 수도꼭지 추가
 http://bitcoinfaucet.uo1.net/
+### 우리 주소에 자금 추가
+<img src="./images/bitcoin_faucet.png" />
