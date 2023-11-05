@@ -60,7 +60,7 @@ bitcoind
 ### 비트코인 코어 디렉터리 파일 설명
 | 파일명     | 설명                                                                  |
 | ---------- | --------------------------------------------------------------------- |
-| blocks      | 실제 비트코인 블록들이 여기에 저장된다.                               |
+| blocks     | 실제 비트코인 블록들이 여기에 저장된다.                               |
 | chainstate | 사용 가능한 UTXO들에 대한 LevelDB 데이터베이스가 여기에 저장된다.     |
 | wallet     | 개인 키들이 저장된 wallet.dat 파일을 암호화한 버전이 여기에 저장된다. |
 
@@ -109,3 +109,32 @@ bitcoin-cli listunspent
 ```
 electrum --testnet listunspent
 ```
+
+## 거래 생성
+### 메시지를 16진 값으로 변경
+https://codebeautify.org/string-hex-converter
+<img src="./images/string_to_hex.png">
+
+### RPC 명령을 이용하여 원 거래 생성 (아래와 같은 매개변수 요구)
+| 이름        | 설명                                                                                                        |
+| ----------- | ----------------------------------------------------------------------------------------------------------- |
+| txid        | 기존 거래에 있는 출력(새 거래에서 지출할)의 식별자. 일렉트럼 출력 결과의 prevout_hash 필드를 사용하면 된다. |
+| vout        | 그 출력의 색인. 일렉트럼 UTXO 출력 결과의 prevout_n 필드를 사용하면 된다.                                   |
+| data        | 거래에 포함할 메시지의 16진 문자열                                                                          |
+| 수신자 주소 | 앞에서 bitcoin-cli로 생성한 주소를 사용하면 된다.                                                           |
+| 보낼 금액   | 단위는 비트코인 화폐의 기본 단위인 BTC(비트코인 동전 하나에 해당)이다.                                      |
+
+#### 다음은 0.00001BTC를 송금하는 원 개래를 생성하는 명령이다.(송금액을 0으로 설정하는 것도 가능하다)
+<img src="./images/createrawtransaction.png"/>
+
+```
+bitcoin-cli createrawtransaction "[{\"txid\":\"58c254d0381628886a8e9d0d8300cfb040b34b2a15310bc743d4fc70fa408742\",\"vout\": 0}]" "{\"data\":\"68656c6c6f20776f726c64\",\"mgkBGpJDAF5CxGrnDaRzV8BiGEaHGg5ifs\":0.00001}"
+```
+
+#### 다음은 위로 인해 생성된 16진 문자열을 이해하기 쉬운 형태로 변환하는 명령이다.
+<img src="./images/deserialize.png"/>
+
+```
+electrum --testnet deserialize <원 거래 16진 문자열>
+```
+
