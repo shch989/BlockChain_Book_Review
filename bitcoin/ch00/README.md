@@ -91,7 +91,21 @@ electrum --testnet daemon load_wallet
 electrum --testnet listaddresses
 ```
 ## 주소에 자금 추가
-### 비트코인 수도꼭지 추가
-http://bitcoinfaucet.uo1.net/
+### 우리 주소 확인
+<img src="./images/receiving_address.png"/>
+
 ### 우리 주소에 자금 추가
+http://bitcoinfaucet.uo1.net/
 <img src="./images/bitcoin_faucet.png" />
+
+### 비트코인 수도꼭지 확인
+<img src="./images/bitcoin_listunspent.png"/>
+
+```
+bitcoin-cli listunspent
+```
+<img src="./images/listunspent.png"/>
+
+```
+electrum --testnet listunspent
+```
