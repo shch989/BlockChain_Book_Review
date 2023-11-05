@@ -96,6 +96,7 @@ electrum --testnet listaddresses
 
 ### 우리 주소에 자금 추가
 http://bitcoinfaucet.uo1.net/
+
 <img src="./images/bitcoin_faucet.png" />
 
 ### 비트코인 수도꼭지 확인
@@ -113,6 +114,7 @@ electrum --testnet listunspent
 ## 거래 생성
 ### 메시지를 16진 값으로 변경
 https://codebeautify.org/string-hex-converter
+
 <img src="./images/string_to_hex.png">
 
 ### RPC 명령을 이용하여 원 거래 생성 (아래와 같은 매개변수 요구)
