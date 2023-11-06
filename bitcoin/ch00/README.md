@@ -140,3 +140,24 @@ bitcoin-cli createrawtransaction "[{\"txid\":\"58c254d0381628886a8e9d0d8300cfb04
 electrum --testnet deserialize <원 거래 16진 문자열>
 ```
 
+## 거래 서명
+### 우리 주소에 대한 개인 키를 얻는 명령
+<img src="./images/getprivatekeys.png" />
+
+```
+electrum --testnet listaddresses | electrum --testnet getprivatekeys -
+```
+
+### 거래의 16진 문자열 조회
+<img src="./images/gettransaction.png" />
+
+```
+electrum gettransaction --testnet <prevout_hash>
+```
+
+### 16진 문자열 복호화
+<img src="./images/scriptPubKey.png" />
+
+```
+electrum --testnet deserialize <16진 문자열>
+```
